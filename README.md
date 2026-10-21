@@ -1,59 +1,112 @@
-# Arduino ZMPT101B Voltage Sensor with LCD Display
+# ⚡ Arduino ZMPT101B Voltage Sensor with LCD Display
 
-This Arduino project measures both AC and DC voltages using the ZMPT101B sensor and displays the readings on a 16x2 LCD screen.
+An Arduino-based voltage monitoring project that uses the **ZMPT101B sensor** and a **16×2 I2C LCD** to display voltage readings in real time.
 
-## Components Used
+> **Note:** Confirm AC/DC measurement capabilities against your actual Arduino sketch and circuit before claiming both.
 
-- ZMPT101B Voltage Sensor
-- Arduino Board (e.g., Arduino Uno)
-- 16x2 LCD with I2C Interface
-- Potentiometer for LCD Contrast Adjustment
+## ✨ Features
 
-## Libraries Required
+- Real-time voltage monitoring
+- ZMPT101B sensor integration
+- 16×2 LCD display with I2C
+- Serial Monitor output for debugging
+- Adjustable sensor sensitivity for calibration
 
-- [ZMPT101B](https://github.com/rrobinet/ZMPT101B) (Install via Arduino Library Manager)
-- [LiquidCrystal_I2C](https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library) (Install via Arduino Library Manager)
+## 🧰 Components Required
 
-## Circuit Diagram
+| Component | Purpose |
+|---|---|
+| Arduino Uno or compatible board | Main controller |
+| ZMPT101B voltage sensor module | AC voltage measurement |
+| 16×2 LCD with I2C interface | Displays readings |
+| Jumper wires | Circuit connections |
+| USB cable | Programming and serial monitoring |
 
-![Circuit Diagram](link-to-your-circuit-diagram-image)
+## 📚 Libraries Required
 
-Describe your circuit diagram here, explaining how the ZMPT101B sensor and LCD are connected to the Arduino board.
+Install these libraries through the Arduino IDE Library Manager, or use the linked repositories.
 
-## Setup
+- [ZMPT101B Library](https://github.com/rrobinet/ZMPT101B)
+- [LiquidCrystal_I2C Library](https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library)
 
-1. **Install Libraries**: Install the ZMPT101B and LiquidCrystal_I2C libraries using the Arduino Library Manager.
+## 🔌 Circuit Diagram
 
-2. **Connect Components**:
-   - Connect the ZMPT101B sensor to analog pin A0 on the Arduino board.
-   - Connect the 16x2 LCD to the Arduino via I2C (usually A4 and A5).
+Add your actual circuit diagram to the repository at:
 
-3. **Adjust Sensitivity**:
-   - Use the `SENSITIVITY` constant in the code to adjust the sensitivity based on your calibration needs.
+`images/circuit-diagram.png`
 
-4. **Upload Code**: Upload the provided Arduino sketch (`voltage_sensor_lcd.ino`) to your Arduino board.
+Then display it in this section:
 
-5. **Monitor Output**:
-   - Open the Serial Monitor to view AC and DC voltage readings.
-   - The LCD will display real-time AC and DC voltages.
+![Arduino ZMPT101B voltage sensor circuit diagram](images/circuit-diagram.png)
 
-## Code Explanation
+**Suggested connections** — verify these against your specific modules and sketch:
 
-- **`setup()` Function**: Initializes serial communication, sets the ZMPT101B sensor sensitivity, and initializes the LCD.
+| Component | Arduino connection |
+|---|---|
+| ZMPT101B OUT | A0 |
+| ZMPT101B VCC | Compatible supply voltage |
+| ZMPT101B GND | GND |
+| I2C LCD SDA | A4 on Arduino Uno |
+| I2C LCD SCL | A5 on Arduino Uno |
+| I2C LCD VCC/GND | Compatible supply and GND |
 
-- **`loop()` Function**: Continuously reads AC and DC voltages from the sensor, prints them to the Serial Monitor, and displays them on the LCD.
+*The image will display once `images/circuit-diagram.png` has been added to the repository.*
 
-## Additional Notes
+## 🚀 Getting Started
 
-- Ensure the ZMPT101B sensor is rated for the voltage range you are measuring (typically 0-250V AC).
-- Adjust the `SENSITIVITY` constant based on calibration values obtained from the sensor.
+### 1. Clone the repository
 
-## Author
+```bash
+git clone https://github.com/usmana0820/Aurdino-Volt-LCD.git
+cd Aurdino-Volt-LCD
+```
 
-- **Usmana Zulfiqar**
-- **Email:** usmanazulfiqar2001@gmail.com
-- **GitHub:** [usmana5809](https://github.com/usmana5809)
+### 2. Install the libraries
 
-## License
+Open Arduino IDE and install the ZMPT101B and LiquidCrystal_I2C libraries.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### 3. Connect the components
+
+Wire the sensor output to A0 and connect the I2C LCD to the appropriate SDA and SCL pins for your Arduino board.
+
+### 4. Configure sensitivity
+
+If your sketch defines a `SENSITIVITY` constant, adjust it using a safe calibration procedure and compare readings with a suitable reference meter.
+
+### 5. Upload the sketch
+
+Open `voltage_sensor_lcd.ino`, select your Arduino board and port, and upload the code.
+
+### 6. View the readings
+
+Open the Serial Monitor at the baud rate specified in your sketch. The LCD should display the measurements supported by your implementation.
+
+## 💻 Code Overview
+
+- **`setup()`** — Initializes serial communication, the sensor configuration, and the LCD.
+- **`loop()`** — Repeatedly reads measurements and updates the serial output and display.
+
+The exact behavior depends on the implementation in `voltage_sensor_lcd.ino`.
+
+## ⚠️ Safety and Calibration
+
+- The ZMPT101B is designed for AC voltage sensing; do not assume it can measure DC voltage.
+- Verify the module's voltage rating and wiring before use.
+- AC mains voltage can cause fatal electric shock. Do not handle exposed live wiring, and use appropriate isolation and enclosure precautions.
+- Calibrate the sensor against a suitable reference instrument before relying on its readings.
+- Never connect AC mains directly to an Arduino input.
+
+## 👩‍💻 Author
+
+**Usmana Zulfiqar**
+
+- **Email:** [usmanazulfiqar20@gmail.com](mailto:usmanazulfiqar20@gmail.com)
+- **GitHub:** [usmana0820](https://github.com/usmana0820)
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details, if included in the repository.
+
+---
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
